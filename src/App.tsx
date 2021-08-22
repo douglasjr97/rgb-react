@@ -5,14 +5,24 @@ import './App.css';
 
 function App() {
   const [red, setRed] = useState(0);
-  // const [green, setGreen] = useState(0);
+  const [green, setGreen] = useState(0);
+  const [count, setCount] = useState(0)
   // const [blue, setBlue] = useState(0);
 
-  // function handleChangeGreen(){
-  //   setGreen()
-  // }
+  function handleNumber() {
 
-  
+    setCount(count+1)
+
+
+  }
+
+  function handleChangeGreen(event: any) {
+
+    setGreen(event.target.value)
+
+
+  }
+
 
   return (
     <>
@@ -25,7 +35,7 @@ function App() {
         value={red}
         onChange={({ target }) => setRed(parseInt(target.value))} />
 
-      {/* <h3>Green: {green}</h3>
+      <h3>Green: {green}</h3>
 
       <input
         type="range"
@@ -34,7 +44,12 @@ function App() {
         value={green}
         onChange={handleChangeGreen} />
 
-      <h3>Blue: {blue}</h3>
+        <h1>{count}</h1>
+        <button onClick={handleNumber}>+</button>
+        <button onClick={() => setCount(count -1)}>-</button> 
+
+
+      {/* <h3>Blue: {blue}</h3>
 
       <input
         type="range"
