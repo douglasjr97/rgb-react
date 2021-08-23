@@ -7,7 +7,7 @@ function App() {
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(0);
   const [count, setCount] = useState(0)
-  // const [blue, setBlue] = useState(0);
+  const [blue, setBlue] = useState(0);
 
   function handleNumber() {
 
@@ -16,12 +16,15 @@ function App() {
 
   }
 
-  function handleChangeGreen(event: any) {
-
+  function handleChangeGreen(event: any){
     setGreen(event.target.value)
-
-
   }
+
+  function handleChangeBlue(event: any){
+    setBlue(event.target.value)
+  }
+
+ 
 
 
   return (
@@ -49,14 +52,14 @@ function App() {
         <button onClick={() => setCount(count -1)}>-</button> 
 
 
-      {/* <h3>Blue: {blue}</h3>
+      <h3>Blue: {blue}</h3>
 
       <input
         type="range"
         min={0}
         max={255}
         value={blue}
-        onChange={({ target }) => setRed(parseInt(target.value))} /> */}
+        onChange={handleChangeBlue} />
     </>
   );
 }
