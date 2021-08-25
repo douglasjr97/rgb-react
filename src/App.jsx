@@ -1,34 +1,28 @@
 import React from 'react';
 import { useState } from 'react';
-
 import './App.css';
+import { ColorBox } from './components/ColorBox';
+
 
 function App() {
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(0);
-  const [count, setCount] = useState(0)
   const [blue, setBlue] = useState(0);
-
-  function handleNumber() {
-
-    setCount(count+1)
+  const [history, setHistory] = useState([]);
 
 
-  }
-
-  function handleChangeGreen(event: any){
+  function handleChangeGreen(event: any) {
     setGreen(event.target.value)
   }
 
-  function handleChangeBlue(event: any){
+  function handleChangeBlue(event: any) {
     setBlue(event.target.value)
   }
-
- 
 
 
   return (
     <>
+      <ColorBox backgroundColor={`rgb(${red}, ${green}, ${blue})`} />
       <h3>Red: {red}</h3>
 
       <input
@@ -47,11 +41,6 @@ function App() {
         value={green}
         onChange={handleChangeGreen} />
 
-        <h1>{count}</h1>
-        <button onClick={handleNumber}>+</button>
-        <button onClick={() => setCount(count -1)}>-</button> 
-
-
       <h3>Blue: {blue}</h3>
 
       <input
@@ -60,6 +49,8 @@ function App() {
         max={255}
         value={blue}
         onChange={handleChangeBlue} />
+
+       <p><button onClick={() => setHistory((h) => [[red, green, blue], ...h]) }>Adiocionar Histórico</button></p>
     </>
   );
 }
