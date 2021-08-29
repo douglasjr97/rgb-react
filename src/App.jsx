@@ -24,6 +24,12 @@ function App() {
     setBlue(event.target.value)
   }
 
+  function generateRandom(event: any){
+    setRed(Math.floor(Math.random(event.target.value) * 256))
+    setGreen(Math.floor(Math.random(event.target.value) * 256))
+    setBlue(Math.floor(Math.random(event.target.value) * 256))
+  }
+
   const backgroundColor = (r,g,b) => `rgb(${r}, ${g}, ${b})`;
 
 
@@ -56,6 +62,8 @@ function App() {
         max={255} 
         value={blue}
         onChange={handleChangeBlue} />
+
+        <p><button onClick={generateRandom}>Gerar cor Aleatória</button></p>
 
        <p><button onClick={() => setHistory((h) => [[red, green, blue], ...h]) }
        disabled={isColorInHistory}

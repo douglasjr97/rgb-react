@@ -3,6 +3,9 @@ import '../History/styles.css'
 export function History({data, backgroundColor}){
     return(
         <>
+        {!!data.length && (
+
+        
            <section>
                <h3>Histórico de cores geradas:</h3>
 
@@ -17,6 +20,7 @@ export function History({data, backgroundColor}){
                    ))}
                </ul>
            </section>
+           )}
         </>
     );
 }
