@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import { ColorBox } from './components/ColorBox';
+import { History } from './components/History';
 
 
 function App() {
@@ -9,6 +10,10 @@ function App() {
   const [green, setGreen] = useState(0);
   const [blue, setBlue] = useState(0);
   const [history, setHistory] = useState([]);
+
+  const isColorInHistory = history.some(
+    (rgb) => JSON.stringify(rgb) === JSON.stringify([red, green, blue])
+    );
 
 
   function handleChangeGreen(event: any) {
@@ -19,10 +24,12 @@ function App() {
     setBlue(event.target.value)
   }
 
+  const backgroundColor = (r,g,b) => `rgb(${r}, ${g}, ${b})`;
+
 
   return (
     <>
-      <ColorBox backgroundColor={`rgb(${red}, ${green}, ${blue})`} />
+      <ColorBox backgroundColor={backgroundColor(red, green, blue)} />
       <h3>Red: {red}</h3>
 
       <input
@@ -50,7 +57,15 @@ function App() {
         value={blue}
         onChange={handleChangeBlue} />
 
-       <p><button onClick={() => setHistory((h) => [[red, green, blue], ...h]) }>Adiocionar Histórico</button></p>
+       <p><button onClick={() => setHistory((h) => [[red, green, blue], ...h]) }
+       disabled={isColorInHistory}
+       >
+         Adiocionar Histórico</button></p>
+    
+      <hr />
+
+      <History data={history} backgroundColor={backgroundColor}/>
+
     </>
   );
 }
