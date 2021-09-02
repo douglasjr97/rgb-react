@@ -14,7 +14,7 @@ function App() {
   const isColorInHistory = history.some(
     (rgb) => JSON.stringify(rgb) === JSON.stringify([red, green, blue])
     );
-
+ 
 
   function handleChangeGreen(event: any) {
     setGreen(event.target.value)
