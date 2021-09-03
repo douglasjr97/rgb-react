@@ -13,24 +13,24 @@ function App() {
 
   const isColorInHistory = history.some(
     (rgb) => JSON.stringify(rgb) === JSON.stringify([red, green, blue])
-    );
- 
+  );
 
-  function handleChangeGreen(event: any) {
+
+  function handleChangeGreen(event: React.ChangeEvent) {
     setGreen(event.target.value)
   }
 
-  function handleChangeBlue(event: any) {
+  function handleChangeBlue(event: React.ChangeEvent) {
     setBlue(event.target.value)
   }
 
-  function generateRandom(event: any){
+  function generateRandom(event: React.ChangeEvent) {
     setRed(Math.floor(Math.random(event.target.value) * 256))
     setGreen(Math.floor(Math.random(event.target.value) * 256))
     setBlue(Math.floor(Math.random(event.target.value) * 256))
   }
 
-  const backgroundColor = (r,g,b) => `rgb(${r}, ${g}, ${b})`;
+  const backgroundColor = (r, g, b) => `rgb(${r}, ${g}, ${b})`;
 
 
   return (
@@ -59,20 +59,20 @@ function App() {
       <input
         type="range"
         min={0}
-        max={255} 
+        max={255}
         value={blue}
         onChange={handleChangeBlue} />
 
-        <p><button onClick={generateRandom}>Gerar cor Aleatória</button></p>
+      <p><button onClick={generateRandom}>Gerar cor Aleatória</button></p>
 
-       <p><button onClick={() => setHistory((h) => [[red, green, blue], ...h]) }
-       disabled={isColorInHistory}
-       >
-         Adiocionar Histórico</button></p>
-    
+      <p><button onClick={() => setHistory((h) => [[red, green, blue], ...h])}
+        disabled={isColorInHistory}
+      >
+        Adiocionar Histórico</button></p>
+
       <hr />
 
-      <History data={history} backgroundColor={backgroundColor}/>
+      <History data={history} backgroundColor={backgroundColor} />
 
     </>
   );
